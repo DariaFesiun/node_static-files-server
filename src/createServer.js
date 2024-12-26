@@ -3,14 +3,14 @@ const path = require('path');
 const fs = require('fs');
 
 function createServer() {
-  const server = http.createServer(async (req, res) => {
+  const server = http.createServer((req, res) => {
     const { pathname } = new URL(req.url || '', `http://${req.headers.host}`);
     const requestedPath = pathname.replace('/file', '') || 'index.html';
     const realPath = path.join(__dirname, '..', 'public', requestedPath);
 
     res.setHeader('Content-Type', 'text/plain');
 
-    if (!pathname.startsWith('/file')) {
+    if (!pathname.startsWith('/file/')) {
       res.statusCode = 400;
       res.end('Routes not starting with /file/');
 
