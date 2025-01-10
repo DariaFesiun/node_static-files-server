@@ -10,7 +10,7 @@ function createServer() {
 
     res.setHeader('Content-Type', 'text/plain');
 
-    if (!pathname.startsWith('/file/')) {
+    if (!pathname.startsWith('/file')) {
       res.statusCode = 400;
       res.end('Routes not starting with /file/');
 
